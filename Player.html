@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player - Primeval</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="player-container">
+        <!-- Botão Voltar às Temporadas -->
+        <a href="/seasons" class="navigation-btn seasons-link">← Voltar</a>
+        
+        <!-- Player de Vídeo -->
+        <div class="video-wrapper">
+            <iframe src="{{ video_url }}" allow="autoplay; fullscreen"></iframe>
+        </div>
+
+        <!-- Botões de Navegação -->
+        <div class="navigation-buttons">
+            {% if next_episode %}
+                <a href="/player/{{ season }}/{{ next_episode }}" class="navigation-btn next-btn">
+                    ▶ Episódio {{ next_episode }}
+                </a>
+            {% elif next_season %}
+                <a href="/player/{{ next_season }}/{{ first_episode_next_season }}" class="navigation-btn next-season-btn">
+                    ⏭ Temporada {{ next_season }} Ep.1
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

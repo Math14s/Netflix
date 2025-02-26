@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporadas - Primeval</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="seasons-container">
+        <a href="/" class="home-link">« Voltar ao Início</a>
+        <h1 class="main-title">TEMPORADAS</h1>
+        
+        <div class="seasons-grid">
+            {% for season_num, season in seasons.items() %}
+            <div class="season-box">
+                <div class="season-header">
+                    <h2>TEMPORADA {{ season_num }}</h2>
+                    <a href="{{ season.folder }}" target="_blank" class="drive-link">
+                        📁 Pasta Completa
+                    </a>
+                </div>
+                
+                <div class="episodes-list">
+                    {% for episode_num in season.episodes.keys() %}
+                    <a href="/player/{{ season_num }}/{{ episode_num }}" class="episode-btn">
+                        Episódio {{ "%02d"|format(episode_num) }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
